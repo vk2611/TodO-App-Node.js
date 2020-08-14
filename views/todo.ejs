@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
+    <link rel="stylesheet" href="/public/style.css"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <link href="https://fonts.googleapis.com/css?family=Baloo+Bhai|Candal|Chewy&display=swap" rel="stylesheet">
+    <style>
+        body{
+            font-family :'Candal',sans-serif;
+            text-align: center;
+            background: linear-gradient(#e66465, #9198e5);
+            height: 100vh;
+            border: none;
+        }
+        .todo-list-item-name{
+            margin-left: 35%;
+            width: 20%;
+            height: 20px;
+            background-color: mediumslateblue;
+            
+        }
+        .edit{
+            padding-right: 5px;
+            padding-bottom: 1px;
+            color: black;
+            background-color:red;
+        }
+        .form-input{
+            width: 15%;
+            border: none;
+            border-radius: 5%;
+        }
+        .remove{
+            padding-right: 5px;
+            color: black;
+            background-color: green;
+        }
+        .remove:hover,.edit:hover,.todo-list-item-name:hover{
+            background-color: black;
+            color: white;
+        }
+        .faplus{
+            background-color: green;
+            border-radius: 30%;
+        }
+        a,li{
+            padding-left: 10px;
+        }
+        ul li{
+            list-style-type: none;
+            display: flex;
+        } 
+    </style>
+</head>
+<body>
+    <header>
+        <h2>TodO App</h2>
+    </header>
+    <form method="POST">
+        <input class="form-input" type="text" name="name">
+        <button class="faplus" type="submit"><span class="fa fa-plus"></span></button>
+    </form>
+    <ul class="todo-list">
+        <% task.arr.forEach(t=>{ %>
+        <li class="todo-list-item">
+            <div class="todo-list-item-name"><%= t.name%></div>
+            <a href="/completed/<%=t.id%>" class="edit"><span class="fas fa-check"></span></a>
+            <a href="/remove/<%=t.id%>" class="remove"><span class="fas fa-times"></span></a></div>
+        </li>
+        <% }) %>
+    </ul>
+    <h2>Completed Task</h2>
+    <ul class="todo-list">
+        <% task.com.forEach(v=>{ %>
+        <li class="todo-list-item">
+            <div class="todo-list-item-name"><%= v.name%></div>
+        </li>
+        <% }) %>
+    </ul>
+</body>
+</html>
